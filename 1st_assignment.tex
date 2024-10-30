@@ -1,0 +1,331 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Songti SC}
+          \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Songti SC}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={第一次作业你的报告题目},
+  pdfauthor={your name},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第一次作业你的报告题目}
+\author{your name}
+\date{2024-10-30}
+
+\begin{document}
+\maketitle
+
+\section{你的主要发现}\label{ux4f60ux7684ux4e3bux8981ux53d1ux73b0}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  白沙洲区域的房子供应数量最多
+\item
+  中北路是武汉平均房价最高的地方
+\item
+  汉口北、中北路的房子平均面积最大
+\end{enumerate}
+
+\section{数据介绍}\label{ux6570ux636eux4ecbux7ecd}
+
+本报告\textbf{链家}数据获取方式如下：
+
+报告人在2023年9月12日获取了\href{https://wh.lianjia.com/ershoufang/}{链家武汉二手房网站}数据。
+
+\begin{itemize}
+\item
+  链家二手房网站默认显示100页，每页30套房产，因此本数据包括3000套房产信息；
+\item
+  数据包括了页面可见部分的文本信息，具体字段及说明见作业说明。
+\end{itemize}
+
+\textbf{说明：}数据仅用于教学；由于不清楚链家数据的展示规则，因此数据可能并不是武汉二手房市场的随机抽样，结论很可能有很大的偏差，甚至可能是错误的。
+
+\section{数据概览}\label{ux6570ux636eux6982ux89c8}
+
+数据表（lj)共包括property\_name, property\_region, price\_ttl,
+price\_sqm, bedrooms, livingrooms, building\_area, directions1,
+directions2, decoration, property\_t\_height, property\_height,
+property\_style, followers, near\_subway, if\_2y, has\_key,
+vr等18个变量,共3000行。表的前10行示例如下：
+
+\begin{longtable}[t]{llrrrrrlllrllrllll}
+\caption{\label{tab:unnamed-chunk-2}武汉链家二手房}\\
+\toprule
+property\_name & property\_region & price\_ttl & price\_sqm & bedrooms & livingrooms & building\_area & directions1 & directions2 & decoration & property\_t\_height & property\_height & property\_style & followers & near\_subway & if\_2y & has\_key & vr\\
+\midrule
+南湖名都A区      |南湖沃尔 & |     237. & |     1870 & |        3 &  & 1|        1 & 6.68|南 & |北 & |精装       | &  & 17|中 & |塔楼           | & 3|近地铁 & |NA & |随时看房 |N & | &  & \\
+万科紫悦湾       |光谷东 & |     12 & .0|     14 & 13| & 3| & 2| & 86.91|南 & |NA & |精装 & | & 28|中 & |板楼 & |         1|NA & | & 本满两年 |随时看房 | & R看装修 | &  & \\
+东立国际         |二七 & | & 75.0| & 5968| & 1| & 1| & 46.97|南 & |NA & |简装 & | & 18|低 & |塔楼 & |         3| & 地铁      |N & |随时 & 房 |NA & | & \\
+新都汇           |光谷 & 场        |     1 & 8.0|     1 & 702| & 3| & 2| & 119.73|北 & |东 & |精装 & | & 32|高 & |塔楼 & |         2|近地 & |房本满 & 年 |随时看房 |NA & | &  & \\
+保利城一期       |团结大道 & |     182 & 0|     175 & 9| & | & 2| & 03.95|东南 & |NA & |简装       | &  & 34|中 & |板塔结合       | & 3|NA & |房本满两 & |随时看房 |VR看装 & | &  & \\
+\addlinespace
+加州橘郡         |庙山 & | & 22.0| & 0376| & 3| & 2| & 117.59|南 & |北 & |精装 & | & 34|低 & |板楼 & |         1|N &  & 房本满两年 |随时看房 & NA       | &  & \\
+省建筑五公司西区 |光谷广场 & |      99.0| & 12346| & 2| &  & |         80 & 19|南 & NA & 简装       | &  & 7|低 & |板楼           | & 0|近地铁 & |NA & |随时看房 |VR & 装修 | &  & \\
+保利上城东区     |白沙洲 & |     193 & 8|     163 & 6| & | & 2| & 18.64|南 & |北 & |其他       | &  & 34|中 & |板塔结合       | & 0|近地铁 & |房本满两年 | & 时看房 |NA & | &  & \\
+石化大院         |中南丁 & 桥      |     325 & 0|     326 & 1| & | & 1| & 99.60|南 & |北 & |简装       | &  & 5|低 & |板楼 & 2|近地铁 & |NA & |随时看房 | & A       | &  & \\
+阳光花园         |杨汊湖 & |     1 & 2.0|     1 & 403| & 3| & 2| & 110.33|南 & |北 & |其他 & | & 7|低 & |板楼 & |         0|近地 & |房本满 & 年 |随时看房 |NA & | &  & \\
+\bottomrule
+\end{longtable}
+
+各变量的简短信息：
+
+\begin{verbatim}
+## Rows: 3,000
+## Columns: 18
+## $ property_name     <chr> "南湖名都A区", "万科紫悦湾", "东立国际", "新都汇", "~
+## $ property_region   <chr> "南湖沃尔玛", "光谷东", "二七", "光谷广场", "团结大~
+## $ price_ttl         <dbl> 237.0, 127.0, 75.0, 188.0, 182.0, 122.0, 99.0, 193.8~
+## $ price_sqm         <dbl> 18709, 14613, 15968, 15702, 17509, 10376, 12346, 163~
+## $ bedrooms          <dbl> 3, 3, 1, 3, 3, 3, 2, 3, 4, 3, 5, 3, 4, 3, 3, 2, 3, 4~
+## $ livingrooms       <dbl> 1, 2, 1, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2~
+## $ building_area     <dbl> 126.68, 86.91, 46.97, 119.73, 103.95, 117.59, 80.19,~
+## $ directions1       <chr> "南", "南", "南", "北", "东南", "南", "南", "南", "~
+## $ directions2       <chr> "北", NA, NA, "东", NA, "北", NA, "北", "北", "北", ~
+## $ decoration        <chr> "精装", "精装", "简装", "精装", "简装", "精装", "简~
+## $ property_t_height <dbl> 17, 28, 18, 32, 34, 34, 7, 34, 5, 7, 25, 32, 8, 31, ~
+## $ property_height   <chr> "中", "中", "低", "高", "中", "低", "低", "中", "低"~
+## $ property_style    <chr> "塔楼", "板楼", "塔楼", "塔楼", "板塔结合", "板楼", ~
+## $ followers         <dbl> 3, 1, 3, 2, 3, 1, 0, 0, 2, 0, 0, 0, 10, 0, 0, 1, 0, ~
+## $ near_subway       <chr> "近地铁", NA, "近地铁", "近地铁", NA, NA, "近地铁", ~
+## $ if_2y             <chr> NA, "房本满两年", NA, "房本满两年", "房本满两年", "~
+## $ has_key           <chr> "随时看房", "随时看房", "随时看房", "随时看房", "随~
+## $ vr                <chr> NA, "VR看装修", NA, NA, "VR看装修", NA, "VR看装修", ~
+\end{verbatim}
+
+各变量的简短统计：
+
+\begin{verbatim}
+##  property_name      property_region      price_ttl        price_sqm    
+##  Length:3000        Length:3000        Min.   :  10.6   Min.   : 1771  
+##  Class :character   Class :character   1st Qu.:  95.0   1st Qu.:10799  
+##  Mode  :character   Mode  :character   Median : 137.0   Median :14404  
+##                                        Mean   : 155.9   Mean   :15148  
+##                                        3rd Qu.: 188.0   3rd Qu.:18211  
+##                                        Max.   :1380.0   Max.   :44656  
+##     bedrooms      livingrooms    building_area    directions1       
+##  Min.   :1.000   Min.   :0.000   Min.   : 22.77   Length:3000       
+##  1st Qu.:2.000   1st Qu.:1.000   1st Qu.: 84.92   Class :character  
+##  Median :3.000   Median :2.000   Median : 95.55   Mode  :character  
+##  Mean   :2.695   Mean   :1.709   Mean   :100.87                     
+##  3rd Qu.:3.000   3rd Qu.:2.000   3rd Qu.:117.68                     
+##  Max.   :7.000   Max.   :4.000   Max.   :588.66                     
+##  directions2         decoration        property_t_height property_height   
+##  Length:3000        Length:3000        Min.   : 2.00     Length:3000       
+##  Class :character   Class :character   1st Qu.:11.00     Class :character  
+##  Mode  :character   Mode  :character   Median :27.00     Mode  :character  
+##                                        Mean   :24.22                       
+##                                        3rd Qu.:33.00                       
+##                                        Max.   :62.00                       
+##  property_style       followers       near_subway           if_2y          
+##  Length:3000        Min.   :  0.000   Length:3000        Length:3000       
+##  Class :character   1st Qu.:  1.000   Class :character   Class :character  
+##  Mode  :character   Median :  3.000   Mode  :character   Mode  :character  
+##                     Mean   :  6.614                                        
+##                     3rd Qu.:  6.000                                        
+##                     Max.   :262.000                                        
+##    has_key               vr           
+##  Length:3000        Length:3000       
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character  
+##                                       
+##                                       
+## 
+\end{verbatim}
+
+\section{探究哪个区域房屋供应数量最多}\label{ux63a2ux7a76ux54eaux4e2aux533aux57dfux623fux5c4bux4f9bux5e94ux6570ux91cfux6700ux591a}
+
+\begin{verbatim}
+## # A tibble: 87 x 2
+##    property_region count
+##    <chr>           <int>
+##  1 白沙洲            167
+##  2 盘龙城            126
+##  3 四新              116
+##  4 光谷东            112
+##  5 金银湖             97
+##  6 后湖               86
+##  7 青山               85
+##  8 王家湾             78
+##  9 塔子湖             71
+## 10 珞狮南路           67
+## # i 77 more rows
+\end{verbatim}
+
+\begin{center}\includegraphics[width=1\linewidth]{1st_assignment_files/figure-latex/unnamed-chunk-5-1} \end{center}
+
+\section{探究哪个区域的房产均价最高}\label{ux63a2ux7a76ux54eaux4e2aux533aux57dfux7684ux623fux4ea7ux5747ux4ef7ux6700ux9ad8}
+
+\begin{verbatim}
+## # A tibble: 87 x 2
+##    property_region avg_price_sqm
+##    <chr>                   <dbl>
+##  1 VR看装修               38351 
+##  2 中北路                 32728.
+##  3 水果湖                 28562.
+##  4 黄埔永清               24957.
+##  5 三阳路                 24777.
+##  6 南湖沃尔玛             24181.
+##  7 虎泉杨家湾             23902.
+##  8 CBD西北湖              22272.
+##  9 楚河汉街               21958.
+## 10 关山大道               21480.
+## # i 77 more rows
+\end{verbatim}
+
+\begin{center}\includegraphics[width=1\linewidth]{1st_assignment_files/figure-latex/unnamed-chunk-6-1} \end{center}
+
+\section{探究哪个区域的房产平均面积最大}\label{ux63a2ux7a76ux54eaux4e2aux533aux57dfux7684ux623fux4ea7ux5e73ux5747ux9762ux79efux6700ux5927}
+
+\begin{verbatim}
+## # A tibble: 87 x 2
+##    property_region avg_building_area
+##    <chr>                       <dbl>
+##  1 汉口北                       125.
+##  2 中北路                       125.
+##  3 VR看装修                     125.
+##  4 中法生态城                   122.
+##  5 楚河汉街                     121.
+##  6 卓刀泉                       120.
+##  7 国际百纳                     118.
+##  8 蔡甸其它                     117.
+##  9 CBD西北湖                    117.
+## 10 黄家湖                       117.
+## # i 77 more rows
+\end{verbatim}
+
+\begin{center}\includegraphics[width=1\linewidth]{1st_assignment_files/figure-latex/unnamed-chunk-7-1} \end{center}
+
+可以看到：
+
+\begin{itemize}
+\item
+  越繁华的地区均价越高
+\item
+  白沙洲等郊区供应的房产数量比较多
+\item
+  价格最高的区域、最低的区域，平均房屋面积较大。中间则无明显趋势
+\end{itemize}
+
+\section{探索性分析}\label{ux63a2ux7d22ux6027ux5206ux6790}
+
+\begin{center}\includegraphics[width=1\linewidth]{1st_assignment_files/figure-latex/unnamed-chunk-8-1} \end{center}
+
+\subsection{整体上来看，房产面积越大，总价越高。}\label{ux6574ux4f53ux4e0aux6765ux770bux623fux4ea7ux9762ux79efux8d8aux5927ux603bux4ef7ux8d8aux9ad8}
+
+发现：
+
+\begin{itemize}
+\item
+  通过拟合成一元函数直线，可以估算出武汉的平均房价
+\item
+  通过逆合成曲线，可以看出房价相对于面积的变化趋势。上扬则说明面积越大，平均价格越高。
+\end{itemize}
+
+\subsection{为什么汉口北、中北路这两者区域差异这么大，但平均房屋面积接近且都为最大呢}\label{ux4e3aux4ec0ux4e48ux6c49ux53e3ux5317ux4e2dux5317ux8defux8fd9ux4e24ux8005ux533aux57dfux5deeux5f02ux8fd9ux4e48ux5927ux4f46ux5e73ux5747ux623fux5c4bux9762ux79efux63a5ux8fd1ux4e14ux90fdux4e3aux6700ux5927ux5462}
+
+发现：
+
+\begin{itemize}
+\item
+  汉口北土地充裕，且低价便宜，所以普遍面积较大。
+\item
+  中北路房价高，一般为有钱人居住，有钱人注重生活品质，所以房屋面积大
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{发现总结}\label{ux53d1ux73b0ux603bux7ed3}
+
+\begin{itemize}
+\item
+  越繁华的地区均价越高。比如中北路最高
+\item
+  白沙洲等郊区供应的房产数量比较多。
+\item
+  价格最高的区域（中北路）、最低的区域（汉口北），平均房屋面积较大。中间则无明显趋势
+\end{itemize}
+
+\end{document}

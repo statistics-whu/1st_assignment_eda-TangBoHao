@@ -4,10 +4,6 @@ CJKmainfont: Songti SC
 author: "your name"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
-    latex_engine: xelatex
-  word_document:
-    toc: yes
   html_document:
     code_folding: show
     fig_caption: yes
@@ -16,6 +12,10 @@ output:
     number_sections: yes
     theme: cosmo
     toc: yes
+  word_document:
+    toc: yes
+  pdf_document:
+    latex_engine: xelatex
 ---
 ```{r setup, include = FALSE,echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE,error = FALSE, warning = FALSE, message = FALSE,
@@ -184,7 +184,7 @@ ggplot(lj, aes(x = building_area, y = price_ttl)) +
 
 发现：
 
-- 汉口北土地充裕，且
+- 汉口北土地充裕，且低价便宜，所以普遍面积较大。
 
 - 中北路房价高，一般为有钱人居住，有钱人注重生活品质，所以房屋面积大
 
