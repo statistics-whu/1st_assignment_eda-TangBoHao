@@ -4,6 +4,10 @@ CJKmainfont: Songti SC
 author: "your name"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    latex_engine: xelatex
+  word_document:
+    toc: yes
   html_document:
     code_folding: show
     fig_caption: yes
@@ -12,10 +16,6 @@ output:
     number_sections: yes
     theme: cosmo
     toc: yes
-  word_document:
-    toc: yes
-  pdf_document:
-    latex_engine: xelatex
 ---
 ```{r setup, include = FALSE,echo = FALSE}
 knitr::opts_chunk$set(echo = FALSE,error = FALSE, warning = FALSE, message = FALSE,
